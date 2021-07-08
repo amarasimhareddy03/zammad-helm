@@ -54,8 +54,8 @@ spec:
         image: {{ .Values.image.repository }}:{{if eq .Values.image.repository "zammad/zammad-docker-compose"}}zammad-{{ end }}{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
+          runAsUser: 0
+          runAsGroup: 0
         env:
           - name: "POSTGRESQL_PASS"
             valueFrom:
@@ -78,8 +78,8 @@ spec:
         image: {{ .Values.image.repository }}:{{if eq .Values.image.repository "zammad/zammad-docker-compose"}}zammad-{{ end }}{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
+          runAsUser: 0
+          runAsGroup: 0
         env:
           {{ if or .Values.envConfig.elasticsearch.pass .Values.secrets.elasticsearch.useExisting }}
           - name: "ELASTICSEARCH_PASSWORD"
